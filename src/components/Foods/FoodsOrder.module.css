@@ -1,0 +1,9 @@
+.order {
+  max-width: 60rem;
+  width: 100%;
+  max-height: 40rem;
+  height: 100%;
+  margin-top: 4em;
+  overflow: scroll;
+  background-color: #f1faee;
+}

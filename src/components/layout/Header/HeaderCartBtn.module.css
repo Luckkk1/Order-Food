@@ -1,12 +1,5 @@
 .button {
-  display: flex;
-  background-color: #264653;
   font-size: large;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1em;
-  padding: 0.5em;
   width: 60%;
   height: 2.5em;
   margin-right: 0.5em;

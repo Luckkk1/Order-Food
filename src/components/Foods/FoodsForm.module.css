@@ -1,0 +1,17 @@
+.controls label {
+  font-size: large;
+  margin-right: 0.5em;
+}
+
+.controls input {
+  font-size: large;
+  text-align: center;
+  width: 3em;
+}
+
+.actions button {
+  color: white;
+  background-color: #2a9d8f;
+  width: 100%;
+  margin-top: 0.5em;
+}
