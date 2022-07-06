@@ -1,0 +1,31 @@
+.button {
+  display: flex;
+  background-color: #264653;
+  font-size: large;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1em;
+  padding: 0.5em;
+  width: 60%;
+  height: 2.5em;
+  margin-right: 0.5em;
+}
+
+.button span {
+  color: white;
+  padding: 0 0.2em;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  background-color: #e76f51;
+  width: 1.7em;
+  height: 100%;
+  line-height: 100%;
+  border-radius: 50%;
+  margin-left: 0.25em;
+}
