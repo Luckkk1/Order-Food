@@ -8,3 +8,7 @@
   border-radius: 1em;
   padding: 0.5em;
 }
+
+.btn:hover {
+  background-color: rgb(25, 45, 53);
+}
