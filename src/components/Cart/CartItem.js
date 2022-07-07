@@ -1,15 +1,15 @@
 import Button from '../UI/Button';
 import classes from './CartItem.module.css';
 
-const CartItem = () => {
+const CartItem = (props) => {
   return (
     <li className={classes.li}>
       <div className={classes.description}>
-        <h2>Name</h2>
-        <div className={classes.price}>price</div>
+        <h2>{props.name}</h2>
+        <div className={classes.price}>{props.price}</div>
       </div>
       <div className={classes.amountAndActions}>
-        <div className={classes.amount}>3개</div>
+        <div className={classes.amount}>{props.amount}개</div>
         <div className={classes.actions}>
           <Button>+</Button>
           <Button>-</Button>
