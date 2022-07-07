@@ -1,0 +1,12 @@
+.loading {
+  text-align: center;
+}
+
+.error {
+  text-align: center;
+  color: red;
+}
+
+.ul {
+  overflow: scroll;
+}

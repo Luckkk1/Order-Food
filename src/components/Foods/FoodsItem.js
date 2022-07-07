@@ -5,9 +5,9 @@ const FoodItem = (props) => {
   return (
     <li className={classes.item}>
       <div className={classes.information}>
-        <h2>name</h2>
-        <p>description</p>
-        <p>price</p>
+        <h2>{props.name}</h2>
+        <p>{props.description}</p>
+        <p>{props.price}</p>
       </div>
       <div>
         <FoodsForm />

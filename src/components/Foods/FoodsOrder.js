@@ -4,9 +4,11 @@ import classes from './FoodsOrder.module.css';
 
 const FoodsOrder = () => {
   return (
-    <Card className={classes.order}>
-      <FoodsList />
-    </Card>
+    <section className={classes.section}>
+      <Card className={classes.order}>
+        <FoodsList />
+      </Card>
+    </section>
   );
 };
 

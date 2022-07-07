@@ -15,9 +15,10 @@
 }
 
 .information h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .information p {
-  font-size: 1.25rem;
+  font-size: 1rem;
+  margin-top: 0.5em;
 }
