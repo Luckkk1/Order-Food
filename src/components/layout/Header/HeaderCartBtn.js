@@ -3,9 +3,9 @@ import classes from './HeaderCartBtn.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
-const HeaderCartBtn = () => {
+const HeaderCartBtn = (props) => {
   return (
-    <Button className={classes.button}>
+    <Button className={classes.button} onClick={props.onClick}>
       <span>
         <FontAwesomeIcon icon={faCartShopping} />
       </span>

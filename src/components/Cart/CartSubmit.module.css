@@ -1,0 +1,27 @@
+.submit {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  font-size: 1.5rem;
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions {
+  display: flex;
+  justify-content: end;
+}
+
+.actions button {
+  background-color: #2a9d8f;
+  color: white;
+  width: 5em;
+  height: 3em;
+}
+
+.actions button:first-child {
+  margin-right: 0.5em;
+}

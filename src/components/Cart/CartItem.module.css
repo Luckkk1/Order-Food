@@ -1,0 +1,51 @@
+.li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 1em 0;
+}
+
+li:first-child {
+  padding-top: 0;
+}
+
+li:last-child {
+  padding-bottom: 0;
+  border: none;
+}
+
+.li h2 {
+  font-size: 1.8rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  margin-right: 1em;
+}
+
+.amountAndActions {
+  display: flex;
+  align-items: center;
+}
+
+.amount {
+  font-size: 1.2rem;
+  border: 1px solid #2a9d8f;
+  padding: 0.3em 0.5em;
+  margin-right: 2.5em;
+}
+
+.actions {
+  display: flex;
+}
+
+.actions button:first-child {
+  margin-right: 0.25em;
+}
+
+.actions button {
+  background-color: #2a9d8f;
+  color: white;
+  width: 3em;
+}

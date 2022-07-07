@@ -5,13 +5,13 @@ import HeaderLoginBtn from './HeaderLoginBtn';
 import classes from './Header.module.css';
 import mainImg from '../../../assets/mainHeader.jpg';
 
-const Header = () => {
+const Header = (props) => {
   return (
     <Fragment>
       <header className={classes.header}>
         <h1>미정</h1>
         <div className={classes.actions}>
-          <HeaderCartBtn />
+          <HeaderCartBtn onClick={props.onShow} />
           <HeaderLoginBtn />
         </div>
       </header>

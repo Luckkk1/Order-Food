@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import FoodsItem from './FoodsItem';
+import FoodsItem from './FoodsItem/FoodsItem';
 import classes from './FoodsList.module.css';
 
 const FoodList = () => {
