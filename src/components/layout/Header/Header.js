@@ -12,7 +12,7 @@ const Header = (props) => {
         <h1>미정</h1>
         <div className={classes.actions}>
           <HeaderCartBtn onClick={props.onCartShow} />
-          <Button className={classes.button} onClick={props.onLoginShow}>
+          <Button className={classes.button} onClick={props.onAuthShow}>
             <span>로그인</span>
           </Button>
         </div>

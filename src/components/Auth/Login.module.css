@@ -19,15 +19,17 @@
 
 .control {
   margin-bottom: 0.5em;
+  width: 20em;
 }
 
 .control input {
   font-size: 1.2rem;
-  width: 15em;
+  width: 100%;
   height: 2em;
   padding: 0.5em;
   box-shadow: 0.5px 0.5px 10px 2px rgba(0, 0, 0, 0.25);
   border: 1px solid #8d99ae;
+  border-radius: 5px;
 }
 
 .control:last-child input {
@@ -53,6 +55,7 @@
 
 .actions button {
   background-color: #2a9d8f;
+  color: white;
   width: 7em;
   margin-left: 0.5em;
 }
