@@ -1,0 +1,11 @@
+.modal {
+  position: fixed;
+  left: 32%;
+  width: 36%;
+  top: 30%;
+}
+
+.modal h2 {
+  color: #272640;
+  margin-bottom: 1em;
+}
