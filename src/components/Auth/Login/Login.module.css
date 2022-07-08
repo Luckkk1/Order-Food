@@ -1,0 +1,58 @@
+.login {
+  position: fixed;
+  left: 32%;
+  width: 36%;
+  top: 30%;
+}
+
+.login h2 {
+  color: #272640;
+  margin-bottom: 1em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.control {
+  margin-bottom: 0.5em;
+}
+
+.control input {
+  font-size: 1.2rem;
+  width: 15em;
+  height: 2em;
+  padding: 0.5em;
+  box-shadow: 0.5px 0.5px 10px 2px rgba(0, 0, 0, 0.25);
+  border: 1px solid #8d99ae;
+}
+
+.control:last-child input {
+  margin-bottom: 0.5em;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.actions p {
+  font-size: 0.8rem;
+  margin-right: 0.5em;
+  padding: 0.5em;
+}
+
+.actions p:hover {
+  cursor: pointer;
+  color: #0096c7;
+}
+
+.actions button {
+  background-color: #2a9d8f;
+  width: 7em;
+  margin-left: 0.5em;
+}

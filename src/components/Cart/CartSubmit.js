@@ -9,6 +9,8 @@ const CartForm = (props) => {
 
   const { totalAmount } = cartCtx;
 
+  const validOrder = cartCtx.cartList.length > 0;
+
   return (
     <div className={classes.submit}>
       <div className={classes.description}>
@@ -16,7 +18,7 @@ const CartForm = (props) => {
         <p>{totalAmount}원</p>
       </div>
       <div className={classes.actions}>
-        <Button>주문하기</Button>
+        {validOrder && <Button>주문하기</Button>}
         <Button onClick={props.onClose}>나가기</Button>
       </div>
     </div>

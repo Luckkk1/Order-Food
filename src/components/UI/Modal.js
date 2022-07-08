@@ -9,14 +9,17 @@ const Backdrop = (props) => {
 };
 
 const ModalOverlay = (props) => {
-  return <Card className={classes.modal}>{props.children}</Card>;
+  const style = `${classes.modal} ${props.className}`;
+  return <Card className={style}>{props.children}</Card>;
 };
 
 const Modal = (props) => {
   return (
     <Fragment>
       {ReactDOM.createPortal(
-        <ModalOverlay>{props.children}</ModalOverlay>,
+        <ModalOverlay className={props.className}>
+          {props.children}
+        </ModalOverlay>,
         document.querySelector('#overlay')
       )}
       {ReactDOM.createPortal(
