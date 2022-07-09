@@ -59,3 +59,8 @@
   width: 7em;
   margin-left: 0.5em;
 }
+
+.fail {
+  margin-bottom: 0.5em;
+  color: red;
+}

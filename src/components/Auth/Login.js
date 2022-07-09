@@ -5,6 +5,7 @@ import Button from '../UI/Button';
 import useSetValue from '../hooks/useSetValue';
 import classes from './Login.module.css';
 import Success from './Success';
+import HasError from './HasError';
 
 const Login = (props) => {
   const { val: enteredEmail, fnc: emailChangeHandler } = useSetValue();
@@ -12,6 +13,8 @@ const Login = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
   const [loginUser, setLoginUser] = useState([]);
+  const [hasError, setHasError] = useState();
+  const [loginFail, setLoginFail] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -19,12 +22,18 @@ const Login = (props) => {
         'https://react-demo-5a12a-default-rtdb.firebaseio.com/users.json'
       );
 
+      if (!res.ok) {
+        throw new Error('err has occured');
+      }
+
       const data = await res.json();
 
       setUserData(data);
     };
 
-    fetchUserData();
+    fetchUserData().catch((err) => {
+      setHasError(err.message);
+    });
   }, []);
 
   const loginHandler = () => {
@@ -42,6 +51,8 @@ const Login = (props) => {
       if (idKey === pKey && idKey && pKey) {
         setIsLoggedIn(true);
         setLoginUser({ ...userData[idKey] });
+      } else {
+        setLoginFail(true);
       }
     }
   };
@@ -54,6 +65,10 @@ const Login = (props) => {
         onClose={props.onClose}
       />
     );
+  }
+
+  if (hasError) {
+    return <HasError onClose={props.onClose} err={hasError} />;
   }
 
   return (
@@ -78,6 +93,9 @@ const Login = (props) => {
             />
           </div>
         </div>
+        {loginFail && (
+          <p className={classes.fail}>아이디 혹은 비밀번호가 틀렸습니다.</p>
+        )}
         <div className={classes.actions}>
           <p onClick={props.onShowRegi}>회원가입 하시겠습니까?</p>
           <Button onClick={loginHandler}>로그인</Button>
