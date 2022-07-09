@@ -48,7 +48,13 @@ const Auth = (props) => {
   }
 
   if (isSucceed) {
-    return <Success onClose={props.onClose} />;
+    return (
+      <Success
+        onClose={props.onClose}
+        title={'회원가입 완료'}
+        content={'회원가입을 축하드립니다.'}
+      />
+    );
   }
 };
 
