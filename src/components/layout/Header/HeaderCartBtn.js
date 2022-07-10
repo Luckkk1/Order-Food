@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import Button from '../../UI/Button';
 import CartContext from '../../store/CartContext';
@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 const HeaderCartBtn = (props) => {
+  const [highrightBtn, setHighrightBtn] = useState(false);
   const cartCtx = useContext(CartContext);
 
   const { cartList } = cartCtx;
@@ -15,8 +16,18 @@ const HeaderCartBtn = (props) => {
     return acc + item.amount;
   }, 0);
 
+  const buttonClasses = `${classes.button} ${highrightBtn && classes.bump}`;
+
+  useEffect(() => {
+    setHighrightBtn(true);
+    const timer = setTimeout(() => {
+      setHighrightBtn(false);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [cartList]);
+
   return (
-    <Button className={classes.button} onClick={props.onClick}>
+    <Button className={buttonClasses} onClick={props.onClick}>
       <span>
         <FontAwesomeIcon icon={faCartShopping} />
       </span>
