@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+// import { useState } from 'react';
 
 import useSetValue from '../hooks/use-setValue';
 import Modal from '../UI/Modal';
@@ -58,13 +58,18 @@ const Form = (props) => {
     err: phoneErr,
   } = useSetValue(phoneValidator);
 
-  const formIsValid =
+  let formIsValid = false;
+
+  if (
     emailValid &&
     passwordValid &&
     addressValid &&
-    nameValid &&
     apartValid &&
-    phoneValid;
+    nameValid &&
+    phoneValid
+  ) {
+    formIsValid = true;
+  }
 
   const regiSubmitHandler = (e) => {
     e.preventDefault();
@@ -169,9 +174,12 @@ const Form = (props) => {
           </div>
         </div>
         <div className={classes.action}>
-          <Button type='submit'>회원가입</Button>
+          <Button type='submit' disabled={!formIsValid}>
+            회원가입
+          </Button>
         </div>
       </form>
+      <p className={classes.warn}>*실제로 사용하는 정보를 입력하지마세요!</p>
     </Modal>
   );
 };

@@ -2,7 +2,7 @@
   position: fixed;
   left: 32%;
   width: 36%;
-  top: 30%;
+  top: 20%;
 }
 
 .modal h2 {
@@ -68,4 +68,13 @@
 
 .apart {
   width: 30%;
+}
+
+.action button:disabled {
+  background-color: #cad2c5;
+  cursor: not-allowed;
+}
+
+.warn {
+  color: red;
 }

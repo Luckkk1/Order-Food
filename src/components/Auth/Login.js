@@ -22,12 +22,14 @@ const Login = (props) => {
     chgFnc: emailChangeHandler,
     blurFnc: emailBlurHandler,
     err: emailErr,
+    valid: emailValid,
   } = useSetValue(emailValidator);
   const {
     val: enteredPassword,
     chgFnc: passwordChangeHandler,
     blurFnc: passwordBlurHandler,
     err: passwordErr,
+    valid: passwordValid,
   } = useSetValue(passwordValidator);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
@@ -98,6 +100,7 @@ const Login = (props) => {
     return <HasError onClose={props.onClose} err={hasError} />;
   }
 
+  const formValid = emailValid && passwordValid;
   const emailClasses = `${emailErr && classes.invalid}`;
   const passwordClasses = `${passwordErr && classes.invalid}`;
 
@@ -134,7 +137,9 @@ const Login = (props) => {
         )}
         <div className={classes.actions}>
           <p onClick={props.onShowRegi}>회원가입 하시겠습니까?</p>
-          <Button type='submit'>로그인</Button>
+          <Button type='submit' disabled={!formValid}>
+            로그인
+          </Button>
         </div>
       </form>
     </Modal>

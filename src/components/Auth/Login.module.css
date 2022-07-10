@@ -72,3 +72,8 @@
 .control p {
   color: #e63946;
 }
+
+.actions button:disabled {
+  background-color: #cad2c5;
+  cursor: not-allowed;
+}

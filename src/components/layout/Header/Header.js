@@ -13,7 +13,7 @@ const Header = (props) => {
   return (
     <Fragment>
       <header className={classes.header}>
-        <h1>미정</h1>
+        <h1>Delivery Cook</h1>
         <div className={classes.actions}>
           <HeaderCartBtn onClick={props.onCartShow} />
           {!isLoggedIn && (
