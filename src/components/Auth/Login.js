@@ -2,14 +2,30 @@ import { useEffect, useState } from 'react';
 
 import Modal from '../UI/Modal';
 import Button from '../UI/Button';
-import useSetValue from '../hooks/useSetValue';
+import useSetValue from '../hooks/use-setValue';
 import classes from './Login.module.css';
 import Success from './Success';
 import HasError from './HasError';
 
+const notEmpty = (enteredValue) => enteredValue.trim() !== '';
+const emailValidator = (enteredValue) =>
+  enteredValue.includes('@') && notEmpty(enteredValue);
+const passwordValidator = (enteredValue) =>
+  enteredValue.length > 5 && notEmpty(enteredValue);
+
 const Login = (props) => {
-  const { val: enteredEmail, fnc: emailChangeHandler } = useSetValue();
-  const { val: enteredPassword, fnc: passwordChangeHandler } = useSetValue();
+  const {
+    val: enteredEmail,
+    chgFnc: emailChangeHandler,
+    blurFnc: emailBlurHandler,
+    err: emailErr,
+  } = useSetValue(emailValidator);
+  const {
+    val: enteredPassword,
+    chgFnc: passwordChangeHandler,
+    blurFnc: passwordBlurHandler,
+    err: passwordErr,
+  } = useSetValue(passwordValidator);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
   const [loginUser, setLoginUser] = useState([]);
@@ -71,26 +87,35 @@ const Login = (props) => {
     return <HasError onClose={props.onClose} err={hasError} />;
   }
 
+  const emailClasses = `${emailErr && classes.invalid}`;
+  const passwordClasses = `${passwordErr && classes.invalid}`;
+
   return (
     <Modal onClick={props.onClose} className={classes.login}>
       <h2>아이디 로그인</h2>
       <form className={classes.form}>
-        <div className={classes.controls}>
+        <div className={classes.control}>
           <div className={classes.control}>
             <label htmlFor='email'></label>
             <input
+              className={emailClasses}
               type='text'
               placeholder='이메일'
               onChange={emailChangeHandler}
+              onBlur={emailBlurHandler}
             />
+            {emailErr && <p>올바른 이메일을 입력해주세요.</p>}
           </div>
           <div className={classes.control}>
             <label htmlFor='password'></label>
             <input
+              className={passwordClasses}
               type='password'
               placeholder='비밀번호'
               onChange={passwordChangeHandler}
+              onBlur={passwordBlurHandler}
             />
+            {passwordErr && <p>올바른 비밀번호를 입력해주세요.</p>}
           </div>
         </div>
         {loginFail && (

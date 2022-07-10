@@ -12,8 +12,13 @@
 
 .control {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-bottom: 1.5em;
+}
+
+.control:nth-child(3) {
+  display: flex;
+  flex-direction: row;
 }
 
 .control input {
@@ -29,12 +34,16 @@
   color: bisque;
 }
 
-.control:nth-child(2) input:first-child {
-  width: 60%;
+.invalid::placeholder {
+  color: #e63946;
 }
 
-.control:nth-child(2) input:last-child {
-  width: 40%;
+.control .invalid {
+  border: 1px solid #e63946;
+}
+
+.control p {
+  color: #e63946;
 }
 
 .action {
@@ -46,4 +55,17 @@
   width: 6em;
   background-color: #2a9d8f;
   color: white;
+}
+
+.adressErr {
+  display: flex;
+  flex-direction: row;
+}
+
+.adressErr {
+  width: 70%;
+}
+
+.apart {
+  width: 30%;
 }

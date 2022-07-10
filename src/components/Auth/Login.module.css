@@ -32,10 +32,6 @@
   border-radius: 5px;
 }
 
-.control:last-child input {
-  margin-bottom: 0.5em;
-}
-
 .actions {
   display: flex;
   align-items: center;
@@ -63,4 +59,16 @@
 .fail {
   margin-bottom: 0.5em;
   color: red;
+}
+
+.invalid::placeholder {
+  color: #e63946;
+}
+
+.control .invalid {
+  border: 1px solid #e63946;
+}
+
+.control p {
+  color: #e63946;
 }
