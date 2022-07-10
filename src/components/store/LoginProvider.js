@@ -1,46 +1,43 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 
 import LoginContext from './LoginContext';
 
+const defaultValue = { isLoggedIn: false, userData: {} };
+
+const loginReducer = (state, action) => {
+  if (action.type === 'GET') {
+    return { userData: action.item, isLoggedIn: true };
+  }
+
+  if (action.type === 'LOGOUT') {
+    return { userData: {}, isLoggedIn: false };
+  }
+  return defaultValue;
+};
+
 const LoginProvider = (props) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData, setUserData] = useState({});
-  const [loginUser, setLoginUser] = useState([]);
+  const [state, dispatch] = useReducer(loginReducer, defaultValue);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      const res = await fetch(
-        'https://react-demo-5a12a-default-rtdb.firebaseio.com/users.json'
-      );
-
-      const data = await res.json();
-
-      setUserData(data);
-    };
-
-    fetchUserData();
-  }, []);
-
-  const loginHandler = () => {
-    let idKey;
-    let pKey;
-
-    for (let key in userData) {
-      if (userData[key].email === enteredEmail) {
-        idKey = key;
-      }
-      if (userData[key].password === enteredPassword) {
-        pKey = key;
-      }
-
-      if (idKey === pKey && idKey && pKey) {
-        setIsLoggedIn(true);
-        setLoginUser({ ...userData[idKey] });
-      }
-    }
+  const getUserDataHandler = (data) => {
+    dispatch({ type: 'GET', item: data });
   };
 
-  return <LoginContext.Provider>{props.children}</LoginContext.Provider>;
+  const logoutHandler = () => {
+    dispatch({ type: 'LOGOUT' });
+  };
+
+  const loginContext = {
+    isLoggedIn: state.isLoggedIn,
+    userData: state.userData,
+    onGetData: getUserDataHandler,
+    onLogout: logoutHandler,
+  };
+
+  return (
+    <LoginContext.Provider value={loginContext}>
+      {props.children}
+    </LoginContext.Provider>
+  );
 };
 
 export default LoginProvider;

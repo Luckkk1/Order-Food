@@ -5,6 +5,7 @@ import Foods from './components/Foods/Foods';
 import Cart from './components/Cart/Cart';
 import CartProvider from './components/store/CartProvier';
 import Auth from './components/Auth/Auth';
+import LoginProvider from './components/store/LoginProvider';
 
 function App() {
   const [cartShow, setCartShow] = useState(false);
@@ -29,8 +30,10 @@ function App() {
   return (
     <CartProvider>
       {cartShow && <Cart onClose={cartCloseHandler} />}
-      {authShow && <Auth onClose={authCloseHandler} />}
-      <Header onCartShow={cartShowHandler} onAuthShow={authShowHandler} />
+      <LoginProvider>
+        {authShow && <Auth onClose={authCloseHandler} />}
+        <Header onCartShow={cartShowHandler} onAuthShow={authShowHandler} />
+      </LoginProvider>
       <Foods />
     </CartProvider>
   );

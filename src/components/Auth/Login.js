@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
+import LoginContext from '../store/LoginContext';
 import Modal from '../UI/Modal';
 import Button from '../UI/Button';
 import useSetValue from '../hooks/use-setValue';
@@ -14,6 +15,8 @@ const passwordValidator = (enteredValue) =>
   enteredValue.length > 5 && notEmpty(enteredValue);
 
 const Login = (props) => {
+  const loginCtx = useContext(LoginContext);
+
   const {
     val: enteredEmail,
     chgFnc: emailChangeHandler,
@@ -52,7 +55,9 @@ const Login = (props) => {
     });
   }, []);
 
-  const loginHandler = () => {
+  const loginHandler = (e) => {
+    e.preventDefault();
+
     let idKey;
     let pKey;
 
@@ -72,6 +77,12 @@ const Login = (props) => {
       }
     }
   };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      loginCtx.onGetData(loginUser);
+    }
+  }, [loginUser]);
 
   if (isLoggedIn) {
     return (
@@ -93,7 +104,7 @@ const Login = (props) => {
   return (
     <Modal onClick={props.onClose} className={classes.login}>
       <h2>아이디 로그인</h2>
-      <form className={classes.form}>
+      <form className={classes.form} onSubmit={loginHandler}>
         <div className={classes.control}>
           <div className={classes.control}>
             <label htmlFor='email'></label>
@@ -123,7 +134,7 @@ const Login = (props) => {
         )}
         <div className={classes.actions}>
           <p onClick={props.onShowRegi}>회원가입 하시겠습니까?</p>
-          <Button onClick={loginHandler}>로그인</Button>
+          <Button type='submit'>로그인</Button>
         </div>
       </form>
     </Modal>

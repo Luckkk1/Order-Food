@@ -4,6 +4,8 @@ const LoginContext = React.createContext(() => {
   return {
     isLoggedIn: false,
     userData: {},
+    onGetData: (data) => {},
+    onLogout: () => {},
   };
 });
 
