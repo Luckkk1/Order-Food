@@ -4,7 +4,7 @@ import CartContext from '../store/CartContext';
 import CartItem from './CartItem';
 import classes from './CartList.module.css';
 
-const CartList = () => {
+const CartList = (props) => {
   const cartCtx = useContext(CartContext);
 
   const { cartList } = cartCtx;
@@ -18,6 +18,7 @@ const CartList = () => {
       key={food.id}
     />
   ));
+
   return <ul className={classes.ul}>{foods}</ul>;
 };
 

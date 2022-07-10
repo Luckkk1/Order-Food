@@ -23,7 +23,7 @@ const HeaderCartBtn = (props) => {
     const timer = setTimeout(() => {
       setHighrightBtn(false);
     }, 300);
-    return () => clearTimeout(timer);
+    // return () => clearTimeout(timer);
   }, [cartList]);
 
   return (

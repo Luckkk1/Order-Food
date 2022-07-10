@@ -5,7 +5,7 @@ import LoginContext from './LoginContext';
 const defaultValue = { isLoggedIn: false, userData: {} };
 
 const loginReducer = (state, action) => {
-  if (action.type === 'GET') {
+  if (action.type === 'LOGIN') {
     return { userData: action.item, isLoggedIn: true };
   }
 
@@ -18,8 +18,8 @@ const loginReducer = (state, action) => {
 const LoginProvider = (props) => {
   const [state, dispatch] = useReducer(loginReducer, defaultValue);
 
-  const getUserDataHandler = (data) => {
-    dispatch({ type: 'GET', item: data });
+  const getUserDataHandler = (data, login) => {
+    dispatch({ type: 'LOGIN', item: data, loginState: login });
   };
 
   const logoutHandler = () => {
