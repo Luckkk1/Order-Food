@@ -12,7 +12,8 @@ const CartForm = (props) => {
   const validOrder = cartCtx.cartList.length > 0;
 
   const orderFoodHandler = () => {
-    props.onOrder();
+    props.onSubmit();
+    props.onFetch();
   };
 
   return (

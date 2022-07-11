@@ -1,5 +1,6 @@
 import { Fragment, useContext, useState } from 'react';
 
+import CartOrderFinish from './CartOrderFinish';
 import CartContext from '../store/CartContext';
 import LoginContext from '../store/LoginContext';
 import CartList from './CartList';
@@ -13,6 +14,9 @@ const Cart = (props) => {
   const [needLogin, setNeedLogin] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [orderFinish, setOrderFinish] = useState(false);
+  const [lastOrderData, setLastOrderData] = useState([]);
+
+  const userKey = loginCtx.userData.key;
 
   const sendFoodRequestHandler = () => {
     try {
@@ -22,11 +26,11 @@ const Cart = (props) => {
       }
       setIsLoading(true);
       const res = fetch(
-        'https://react-demo-5a12a-default-rtdb.firebaseio.com/Orders.json',
+        'https://react-demo-5a12a-default-rtdb.firebaseio.com/orders.json',
         {
           method: 'POST',
           body: JSON.stringify({
-            user: loginCtx.userData,
+            key: userKey,
             order: cartCtx.cartList,
             total: cartCtx.totalAmount,
           }),
@@ -41,6 +45,24 @@ const Cart = (props) => {
       setIsLoading(false);
     }
   };
+
+  const requsetOrderDataHandler = async () => {
+    const res = await fetch(
+      'https://react-demo-5a12a-default-rtdb.firebaseio.com/orders.json'
+    );
+    const data = await res.json();
+
+    const loginUserOrderList = [];
+
+    for (let key in data) {
+      if (data[key].key === userKey) {
+        loginUserOrderList.push(data[key].order);
+      }
+    }
+
+    setLastOrderData(loginUserOrderList[loginUserOrderList.length - 1]);
+  };
+
   return (
     <Fragment>
       <Modal onClick={props.onClose}>
@@ -49,15 +71,18 @@ const Cart = (props) => {
             <CartList />
             <CartSubmit
               onClose={props.onClose}
-              onOrder={sendFoodRequestHandler}
+              onSubmit={sendFoodRequestHandler}
+              onFetch={requsetOrderDataHandler}
             />
           </>
         )}
         {hasError && <p>에러가 발생했습니다.</p>}
         {isLoading && <p>로딩중 입니다...</p>}
         {needLogin && <p>로그인 먼저 해주세요.</p>}
-        {orderFinish && <h2>주문이 완료되었습니다.</h2>}
       </Modal>
+      {orderFinish && (
+        <CartOrderFinish onClose={props.onClose} userData={lastOrderData} />
+      )}
     </Fragment>
   );
 };

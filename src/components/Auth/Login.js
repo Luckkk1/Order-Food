@@ -40,7 +40,7 @@ const Login = (props) => {
   useEffect(() => {
     const fetchUserData = async () => {
       const res = await fetch(
-        'https://react-demo-5a12a-default-rtdb.firebaseio.com/users.json'
+        `https://react-demo-5a12a-default-rtdb.firebaseio.com/users.json`
       );
 
       if (!res.ok) {
@@ -73,7 +73,7 @@ const Login = (props) => {
 
       if (idKey === pKey && idKey && pKey) {
         setIsLoggedIn(true);
-        setLoginUser({ ...userData[idKey] });
+        setLoginUser({ ...userData[idKey], key: idKey });
       } else {
         setLoginFail(true);
       }

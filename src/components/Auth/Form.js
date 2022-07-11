@@ -120,7 +120,7 @@ const Form = (props) => {
               onChange={passwordChangeHandler}
               onBlur={passwordBlurHandler}
             />
-            {passwordErr && <p>비밀번호는 5자 이상으로 입력해주세요.</p>}
+            {passwordErr && <p>비밀번호는 6자 이상으로 입력해주세요.</p>}
           </div>
           <div className={classes.control}>
             <div className={classes.adress}>

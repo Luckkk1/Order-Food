@@ -1,10 +1,11 @@
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 
 import CartContext from './CartContext';
 
 const defaultValue = {
   cartList: [],
   totalAmount: 0,
+  isSubmit: false,
 };
 
 let updatedList;
@@ -45,6 +46,7 @@ const cartReducer = (state, action) => {
       state.cartList[existingItemIndex] = updatedItem;
       updatedList = [...state.cartList];
     }
+
     return { cartList: updatedList, totalAmount: updatedAmount };
   }
 

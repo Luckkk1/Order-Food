@@ -1,0 +1,49 @@
+.modal {
+  max-height: 30em;
+  height: 100%;
+}
+
+.modal p {
+  margin-top: 0.5em;
+}
+
+.order {
+  display: flex;
+  height: 20em;
+  margin-top: 2em;
+}
+
+.orderList {
+  width: 50%;
+  margin-right: 1em;
+  overflow: scroll;
+}
+
+.totalAmount {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  margin-left: 1em;
+  /* padding; */
+}
+
+.totalAmount button {
+  width: 50%;
+}
+
+.amount {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.actions {
+  display: flex;
+  justify-content: end;
+}
+
+.actions button {
+  color: white;
+  background-color: #2a9d8f;
+}
