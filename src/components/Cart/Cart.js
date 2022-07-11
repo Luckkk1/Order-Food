@@ -13,6 +13,7 @@ const Cart = (props) => {
   const [hasError, setHasError] = useState();
   const [needLogin, setNeedLogin] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [finishLoading, setFinishLoading] = useState(false);
   const [orderFinish, setOrderFinish] = useState(false);
   const [lastOrderData, setLastOrderData] = useState([]);
 
@@ -37,7 +38,6 @@ const Cart = (props) => {
         }
       );
 
-      cartCtx.onReset();
       setIsLoading(false);
       setOrderFinish(true);
     } catch (err) {
@@ -47,6 +47,7 @@ const Cart = (props) => {
   };
 
   const requsetOrderDataHandler = async () => {
+    setFinishLoading(true);
     const res = await fetch(
       'https://react-demo-5a12a-default-rtdb.firebaseio.com/orders.json'
     );
@@ -59,8 +60,8 @@ const Cart = (props) => {
         loginUserOrderList.push(data[key].order);
       }
     }
-
-    setLastOrderData(loginUserOrderList[loginUserOrderList.length - 1]);
+    setLastOrderData(() => loginUserOrderList[loginUserOrderList.length - 1]);
+    setFinishLoading(false);
   };
 
   return (
@@ -81,7 +82,11 @@ const Cart = (props) => {
         {needLogin && <p>로그인 먼저 해주세요.</p>}
       </Modal>
       {orderFinish && (
-        <CartOrderFinish onClose={props.onClose} userData={lastOrderData} />
+        <CartOrderFinish
+          onClose={props.onClose}
+          userData={lastOrderData}
+          loading={finishLoading}
+        />
       )}
     </Fragment>
   );
