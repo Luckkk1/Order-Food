@@ -15,7 +15,7 @@ const FoodsForm = (props) => {
   };
 
   return (
-    <form onSubmit={formSubmitHanlder}>
+    <form onSubmit={formSubmitHanlder} className={classes.form}>
       <div className={classes.controls}>
         <label htmlFor='amount'>Amount</label>
         <input

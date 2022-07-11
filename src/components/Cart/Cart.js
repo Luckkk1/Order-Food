@@ -6,6 +6,7 @@ import LoginContext from '../store/LoginContext';
 import CartList from './CartList';
 import CartSubmit from './CartSubmit';
 import Modal from '../UI/Modal';
+import classes from './Cart.module.css';
 
 const Cart = (props) => {
   const loginCtx = useContext(LoginContext);
@@ -66,7 +67,7 @@ const Cart = (props) => {
 
   return (
     <Fragment>
-      <Modal onClick={props.onClose}>
+      <Modal onClick={props.onClose} className={classes.modal}>
         {!hasError && !needLogin && !orderFinish && (
           <>
             <CartList />

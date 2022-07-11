@@ -41,3 +41,25 @@
   background: center no-repeat;
   transform: rotateZ(5deg) translateY(-4rem) translateX(-1rem);
 }
+
+@media screen and (max-width: 1080px) {
+  .hide {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .header {
+    padding: 0 5%;
+  }
+
+  .actions {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .header h1 {
+    font-size: 1.7rem;
+  }
+}

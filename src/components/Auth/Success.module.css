@@ -9,3 +9,17 @@
   color: #272640;
   margin-bottom: 1em;
 }
+
+@media screen and (max-width: 982px) {
+  .modal {
+    left: 20%;
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .modal {
+    left: 10%;
+    width: 80%;
+  }
+}

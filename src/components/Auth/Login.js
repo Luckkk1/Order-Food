@@ -108,7 +108,7 @@ const Login = (props) => {
     <Modal onClick={props.onClose} className={classes.login}>
       <h2>아이디 로그인</h2>
       <form className={classes.form} onSubmit={loginHandler}>
-        <div className={classes.control}>
+        <div className={classes.controls}>
           <div className={classes.control}>
             <label htmlFor='email'></label>
             <input

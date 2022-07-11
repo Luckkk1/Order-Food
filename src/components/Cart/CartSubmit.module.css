@@ -2,12 +2,19 @@
   display: flex;
   flex-direction: column;
   margin-top: 2em;
-  font-size: 1.5rem;
 }
 
 .description {
   display: flex;
   justify-content: space-between;
+}
+
+.description h2 {
+  font-size: 2rem;
+}
+
+.description p {
+  font-size: 1.5rem;
 }
 
 .actions {
@@ -24,4 +31,20 @@
 
 .actions button:first-child {
   margin-right: 0.5em;
+}
+
+@media screen and (max-width: 610px) {
+  .description h2 {
+    font-size: 1.5rem;
+  }
+
+  .description p {
+    font-size: 1.2rem;
+  }
+
+  .actions button {
+    width: 5em;
+    height: 2em;
+    margin-top: 0.5em;
+  }
 }

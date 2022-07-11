@@ -31,7 +31,7 @@ const HeaderCartBtn = (props) => {
       <span>
         <FontAwesomeIcon icon={faCartShopping} />
       </span>
-      <span>장바구니</span>
+      <span className={classes.hide}>장바구니</span>
       <span className={classes.count}>{count}</span>
     </Button>
   );

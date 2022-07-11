@@ -44,3 +44,15 @@
     transform: scale(1);
   }
 }
+
+@media screen and (max-width: 1081px) {
+  .hide {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .count {
+    display: none;
+  }
+}

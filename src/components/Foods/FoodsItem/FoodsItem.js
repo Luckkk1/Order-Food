@@ -22,10 +22,10 @@ const FoodItem = (props) => {
     <li className={classes.item}>
       <div className={classes.information}>
         <h2>{props.name}</h2>
-        <p>{props.description}</p>
+        <p className={classes.hide}>{props.description}</p>
         <p>{props.price}</p>
       </div>
-      <div>
+      <div className={classes.form}>
         <FoodsForm onAddToCart={addToCartHandler} />
       </div>
     </li>

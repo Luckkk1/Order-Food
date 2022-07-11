@@ -22,3 +22,9 @@
   font-size: 1rem;
   margin-top: 0.5em;
 }
+
+@media screen and (max-width: 435px) {
+  .hide {
+    display: none;
+  }
+}

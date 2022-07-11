@@ -1,6 +1,9 @@
 .modal {
+  left: 20%;
+  width: 60%;
   max-height: 30em;
   height: 100%;
+  transition: all 300ms ease-out;
 }
 
 .modal p {
@@ -46,4 +49,27 @@
 .actions button {
   color: white;
   background-color: #2a9d8f;
+}
+
+@media screen and (max-width: 740px) {
+  .modal {
+    left: 10%;
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .modal {
+    left: 5%;
+    width: 90%;
+  }
+
+  .amount h2 {
+    font-size: 1rem;
+  }
+
+  .actions button {
+    width: 100%;
+    font-size: 1rem;
+  }
 }
